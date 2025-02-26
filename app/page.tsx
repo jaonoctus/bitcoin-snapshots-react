@@ -3,7 +3,7 @@
 import { useState } from "react"
 import {ExternalLink, Download, Shield, HardDrive, Hash, FileDown} from "lucide-react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
@@ -21,7 +21,6 @@ type NetworkInfo = {
   assumeutxoUrl: string | null
   assumeutxoHeight: string | null
   chain: string
-  prune: string
   size: string
   height: string
   heightUrl: string
@@ -31,6 +30,7 @@ type NetworkInfo = {
   txouts: string
   supply: string
   pruneHeight?: string
+  flags?: string[]
 }
 
 export default function BitcoinSnapshotsRedesign() {
@@ -49,7 +49,6 @@ export default function BitcoinSnapshotsRedesign() {
       assumeutxoUrl: null,
       assumeutxoHeight: null,
       chain: "mainnet",
-      prune: "550",
       pruneHeight: "885156",
       size: "12G",
       height: "885445",
@@ -73,7 +72,6 @@ export default function BitcoinSnapshotsRedesign() {
     //       "https://eu2.contabostorage.com/3fc7909e0b8744a6a4fb58dc5158ffb6:bitcoin/20231218/utxo-testnet-2500000.dat.zst",
     //   assumeutxoHeight: "2,500,000",
     //   chain: "testnet",
-    //   prune: "550",
     //   size: "7.6G",
     //   height: "2,745,129",
     //   heightUrl: "https://mempool.space/testnet/block/00000000000003acf6e5b8e560ff5c5a97748f9a4279418159f8a80af9bdea6d",
@@ -83,28 +81,27 @@ export default function BitcoinSnapshotsRedesign() {
     //   txouts: "103,066,356",
     //   supply: "2,099,663,916,474,610",
     // },
-    // {
-    //   id: "testnet4",
-    //   type: "full",
-    //   name: "Testnet4",
-    //   color: "bg-purple-500",
-    //   hoverColor: "hover:bg-purple-600",
-    //   textColor: "text-purple-500",
-    //   borderColor: "border-purple-500",
-    //   downloadUrl: "#",
-    //   assumeutxoUrl: "#",
-    //   assumeutxoHeight: "1,500,000",
-    //   chain: "testnet4",
-    //   prune: "550",
-    //   size: "5.2G",
-    //   height: "1,652,487",
-    //   heightUrl: "#",
-    //   bestBlock: "A7F3 B21C D8E4 F92B",
-    //   muhash: "D4E2 C93A B7F5 1D8C",
-    //   hashSerialized: "B3F1 C27D 45A8 E9C2",
-    //   txouts: "85,421,934",
-    //   supply: "1,845,732,518,293,751",
-    // },
+    {
+      id: "testnet4",
+      type: "full",
+      name: "Testnet4",
+      color: "bg-purple-500",
+      hoverColor: "hover:bg-purple-600",
+      textColor: "text-purple-500",
+      borderColor: "border-purple-500",
+      downloadUrl: "https://pub-3fcf0b98b9e64d6381ced6eddee57bbf.r2.dev/022025/snapshot-bitcoin-testnet4-71808-full.tar.zst",
+      assumeutxoUrl: null,
+      assumeutxoHeight: null,
+      chain: "testnet4",
+      size: "5.4G",
+      height: "71808",
+      heightUrl: "https://mempool.space/testnet4/block/00000000ec26eab0d4ecbaa909d5fac9044bba74c947ac064fe6f78d227d00e8",
+      bestBlock: "00000000ec26eab0d4ecbaa909d5fac9044bba74c947ac064fe6f78d227d00e8",
+      muhash: "19b6504b217c216a57c898038cc2194d3f4c8d6ad11986b56896bcfc4b5c7813",
+      hashSerialized: "8808bc1933bc9508b97644f9f0d638e2e21e345e2c897e6195e676131f7099a2",
+      txouts: "8092010",
+      supply: "359024997390421",
+    },
     {
       id: "signet",
       type: "full",
@@ -117,7 +114,6 @@ export default function BitcoinSnapshotsRedesign() {
       assumeutxoUrl: "https://pub-3fcf0b98b9e64d6381ced6eddee57bbf.r2.dev/utxo/utxo-bitcoin-signet-160000.dat.zst",
       assumeutxoHeight: "160000",
       chain: "signet",
-      prune: "-",
       size: "9.3G",
       height: "237052",
       heightUrl: "https://mempool.space/signet/block/000000749029989b6df38e62bb2e2e43778a814ba8c13807ca0fd9930de23f7f",
@@ -126,6 +122,7 @@ export default function BitcoinSnapshotsRedesign() {
       hashSerialized: "7f9ec48ab5f54a860bb2b69dbbee45352a3cbe193cae453ef83758092a349849",
       txouts: "11671351",
       supply: "1117602719924825",
+      flags: ['txindex', 'coinstatsindex', 'blockfilterindex']
     },
   ]
 
@@ -170,7 +167,7 @@ export default function BitcoinSnapshotsRedesign() {
             </div>
 
             <TabsContent value="overview" className="space-y-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {networks.map((network) => (
                     <Card key={network.id} className="bg-gray-900 border-gray-800 overflow-hidden">
                       <div className={`h-2 w-full ${network.color}`}></div>
@@ -209,11 +206,6 @@ export default function BitcoinSnapshotsRedesign() {
                           )}
                         </div>
                       </CardContent>
-                      <CardFooter className="border-t border-gray-800 bg-gray-900/50 px-6 py-3">
-                        <div className="w-full text-sm text-gray-400">
-                          <span>Txouts: {formatNumber(network.txouts)}</span>
-                        </div>
-                      </CardFooter>
                     </Card>
                 ))}
               </div>
@@ -295,6 +287,17 @@ export default function BitcoinSnapshotsRedesign() {
                         {networks.map((network) => (
                             <td key={network.id} className="text-center py-4 px-2">
                               {network.type}
+                            </td>
+                        ))}
+                      </tr>
+                      <tr className="border-b border-gray-800/50">
+                        <td className="py-4 px-2 font-medium">Flags</td>
+                        {networks.map((network) => (
+                            <td key={network.id} className="text-center py-4 px-2">
+                              {network.flags && network.flags.map(flag => (
+                                  <Badge variant="outline" className="mx-1" key={network.id}>{flag}</Badge>
+                              ))}
+                              {!network.flags && (<span>-</span>)}
                             </td>
                         ))}
                       </tr>
