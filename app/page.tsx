@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ExternalLink, Download, Shield, HardDrive, Hash } from "lucide-react"
+import {ExternalLink, Download, Shield, HardDrive, Hash, FileDown} from "lucide-react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -18,8 +18,8 @@ type NetworkInfo = {
   textColor: string
   borderColor: string
   downloadUrl: string
-  assumeutxoUrl: string
-  assumeutxoHeight: string
+  assumeutxoUrl: string | null
+  assumeutxoHeight: string | null
   chain: string
   prune: string
   size: string
@@ -46,9 +46,8 @@ export default function BitcoinSnapshotsRedesign() {
       textColor: "text-orange-500",
       borderColor: "border-orange-500",
       downloadUrl: "https://pub-3fcf0b98b9e64d6381ced6eddee57bbf.r2.dev/022025/snapshot-bitcoin-mainnet-885445-pruned.tar.zst",
-      assumeutxoUrl:
-          "XXX",
-      assumeutxoHeight: "821568",
+      assumeutxoUrl: null,
+      assumeutxoHeight: null,
       chain: "mainnet",
       prune: "550",
       pruneHeight: "885156",
@@ -115,8 +114,8 @@ export default function BitcoinSnapshotsRedesign() {
       textColor: "text-indigo-500",
       borderColor: "border-indigo-500",
       downloadUrl: "https://pub-3fcf0b98b9e64d6381ced6eddee57bbf.r2.dev/022025/snapshot-bitcoin-signet-237052-full.tar.zst",
-      assumeutxoUrl: "XXX",
-      assumeutxoHeight: "160,000",
+      assumeutxoUrl: "https://pub-3fcf0b98b9e64d6381ced6eddee57bbf.r2.dev/utxo/utxo-bitcoin-signet-160000.dat.zst",
+      assumeutxoHeight: "160000",
       chain: "signet",
       prune: "-",
       size: "9.3G",
@@ -201,11 +200,13 @@ export default function BitcoinSnapshotsRedesign() {
                               <Download className="mr-2 h-4 w-4"/> Download snapshot
                             </a>
                           </Button>
-                          {/*<Button asChild variant="outline" className="border-gray-700 hover:bg-gray-800">*/}
-                          {/*  <a href={network.assumeutxoUrl} target="_blank" rel="noopener noreferrer">*/}
-                          {/*    <FileDown className="mr-2 h-4 w-4"/> assumeutxo @ {formatNumber(network.assumeutxoHeight)}*/}
-                          {/*  </a>*/}
-                          {/*</Button>*/}
+                          {network.assumeutxoUrl && network.assumeutxoHeight && (
+                              <Button asChild variant="outline" className="border-gray-700 hover:bg-gray-800">
+                                <a href={network.assumeutxoUrl} target="_blank" rel="noopener noreferrer">
+                                  <FileDown className="mr-2 h-4 w-4"/> assumeutxo @ {formatNumber(network.assumeutxoHeight)}
+                                </a>
+                              </Button>
+                          )}
                         </div>
                       </CardContent>
                       <CardFooter className="border-t border-gray-800 bg-gray-900/50 px-6 py-3">
