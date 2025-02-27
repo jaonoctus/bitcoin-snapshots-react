@@ -111,7 +111,7 @@ export default function BitcoinSnapshotsRedesign() {
       textColor: "text-indigo-500",
       borderColor: "border-indigo-500",
       downloadUrl: "https://pub-3fcf0b98b9e64d6381ced6eddee57bbf.r2.dev/022025/snapshot-bitcoin-signet-237052-full.tar.zst",
-      assumeutxoUrl: "https://pub-3fcf0b98b9e64d6381ced6eddee57bbf.r2.dev/utxo/utxo-bitcoin-signet-160000.dat.zst",
+      assumeutxoUrl: "https://pub-3fcf0b98b9e64d6381ced6eddee57bbf.r2.dev/utxo/utxo-bitcoin-signet-160000.dat",
       assumeutxoHeight: "160000",
       chain: "signet",
       size: "9.3G",
