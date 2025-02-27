@@ -147,15 +147,6 @@ export default function BitcoinSnapshotsRedesign() {
               Fast-track your node setup with pre-synced blockchain data. These snapshots provide a verified copy of the
               Bitcoin blockchain at specific points in time, significantly reducing initial sync time.
             </p>
-            <a href="https://zbd.gg/jaonoctus" target="_blank" className="inline-flex items-center justify-center p-1 bg-orange-500/10 rounded-full mb-4">
-              <span className="px-2">If you like this, donate to:</span>
-              <Badge
-                  variant="outline"
-                  className="border-orange-500/30 text-orange-400 px-3 py-1 rounded-full text-sm font-medium"
-              >
-                jaonoctus@zbd.gg
-              </Badge>
-            </a>
           </div>
 
           <Tabs defaultValue="overview" className="w-full" onValueChange={setActiveTab}>
@@ -397,6 +388,16 @@ export default function BitcoinSnapshotsRedesign() {
           </Tabs>
 
           <footer className="mt-20 text-center text-gray-500 text-sm">
+            <a href="https://zbd.gg/jaonoctus" target="_blank"
+               className="mb-20 inline-flex items-center justify-center p-1 bg-orange-500/10 rounded-full mb-4">
+              <span className="px-2">If you like this, donate to:</span>
+              <Badge
+                  variant="outline"
+                  className="border-orange-500/30 text-orange-400 px-3 py-1 rounded-full text-sm font-medium"
+              >
+                jaonoctus@zbd.gg
+              </Badge>
+            </a>
             <p>
               This project is maintained by{" "}
               <a
@@ -405,7 +406,7 @@ export default function BitcoinSnapshotsRedesign() {
                   rel="noopener noreferrer"
                   className="font-bold text-orange-500 hover:text-orange-400 transition-colors"
               >
-              jaonoctus
+                jaonoctus
               </a>
             </p>
           </footer>
