@@ -59,28 +59,6 @@ export default function BitcoinSnapshotsRedesign() {
       txouts: "179299972",
       supply: "1982929792652975",
     },
-    // {
-    //   id: "testnet3",
-    //   type: "pruned",
-    //   name: "Testnet3",
-    //   color: "bg-teal-500",
-    //   hoverColor: "hover:bg-teal-600",
-    //   textColor: "text-teal-500",
-    //   borderColor: "border-teal-500",
-    //   downloadUrl: "https://eu2.contabostorage.com/3fc7909e0b8744a6a4fb58dc5158ffb6:bitcoin/202404/testnet.tar.zst",
-    //   assumeutxoUrl:
-    //       "https://eu2.contabostorage.com/3fc7909e0b8744a6a4fb58dc5158ffb6:bitcoin/20231218/utxo-testnet-2500000.dat.zst",
-    //   assumeutxoHeight: "2,500,000",
-    //   chain: "testnet",
-    //   size: "7.6G",
-    //   height: "2,745,129",
-    //   heightUrl: "https://mempool.space/testnet/block/00000000000003acf6e5b8e560ff5c5a97748f9a4279418159f8a80af9bdea6d",
-    //   bestBlock: "59F8 A80A F9BD EA6D",
-    //   muhash: "F8F1 4157 C031 EDDE",
-    //   hashSerialized: "7652 0565 7BC6 D834",
-    //   txouts: "103,066,356",
-    //   supply: "2,099,663,916,474,610",
-    // },
     {
       id: "testnet4",
       type: "full",
@@ -93,7 +71,7 @@ export default function BitcoinSnapshotsRedesign() {
       assumeutxoUrl: null,
       assumeutxoHeight: null,
       chain: "testnet4",
-      size: "5.4G",
+      size: "589M",
       height: "71808",
       heightUrl: "https://mempool.space/testnet4/block/00000000ec26eab0d4ecbaa909d5fac9044bba74c947ac064fe6f78d227d00e8",
       bestBlock: "00000000ec26eab0d4ecbaa909d5fac9044bba74c947ac064fe6f78d227d00e8",
@@ -110,18 +88,40 @@ export default function BitcoinSnapshotsRedesign() {
       hoverColor: "hover:bg-indigo-600",
       textColor: "text-indigo-500",
       borderColor: "border-indigo-500",
-      downloadUrl: "https://pub-3fcf0b98b9e64d6381ced6eddee57bbf.r2.dev/022025/snapshot-bitcoin-signet-237052-full.tar.zst",
+      downloadUrl: "https://pub-3fcf0b98b9e64d6381ced6eddee57bbf.r2.dev/snapshot-bitcoin-signet-241715-full.tar.zst",
       assumeutxoUrl: "https://pub-3fcf0b98b9e64d6381ced6eddee57bbf.r2.dev/utxo/utxo-bitcoin-signet-160000.dat",
       assumeutxoHeight: "160000",
+      chain: "mutinynet",
+      size: "836M",
+      height: "241715",
+      heightUrl: "https://mempool.space/signet/block/00000056e70ee99609c97c5c30e8ed711824b2baa229d53529a48e2cbfb75806",
+      bestBlock: "00000056e70ee99609c97c5c30e8ed711824b2baa229d53529a48e2cbfb75806",
+      muhash: "f5420e838faf6540481febc880688b17e9714d9986834a5717a97d6f182bdca1",
+      hashSerialized: "4fcb936c4551041cd78111946c9d4c23d7f4fa4b3cadd6faef3b8635948a9cdd",
+      txouts: "13042756",
+      supply: "1129260219918338",
+      flags: ['txindex', 'coinstatsindex', 'blockfilterindex']
+    },
+    {
+      id: "mutinynet",
+      type: "full",
+      name: "Mutinynet",
+      color: "bg-red-500",
+      hoverColor: "hover:bg-red-600",
+      textColor: "text-red-500",
+      borderColor: "border-red-500",
+      downloadUrl: "https://pub-3fcf0b98b9e64d6381ced6eddee57bbf.r2.dev/snapshot-bitcoin-mutinynet-1980844-full.tar.zst",
+      assumeutxoUrl: null,
+      assumeutxoHeight: null,
       chain: "signet",
-      size: "9.3G",
-      height: "237052",
-      heightUrl: "https://mempool.space/signet/block/000000749029989b6df38e62bb2e2e43778a814ba8c13807ca0fd9930de23f7f",
-      bestBlock: "000000749029989b6df38e62bb2e2e43778a814ba8c13807ca0fd9930de23f7f",
-      muhash: "fe14ef3f472786d9f07b25940a75bc0bac224475e77478f60a2854da805ac8fe",
-      hashSerialized: "7f9ec48ab5f54a860bb2b69dbbee45352a3cbe193cae453ef83758092a349849",
-      txouts: "11671351",
-      supply: "1117602719924825",
+      size: "780M",
+      height: "1980844",
+      heightUrl: "https://mutinynet.com/block/000001f610e4d2918e1fa3324bb79e603d680d8d595ceafffee90adab5d760ea",
+      bestBlock: "000001f610e4d2918e1fa3324bb79e603d680d8d595ceafffee90adab5d760ea",
+      muhash: "2a97c07bbd680f6c3274eac7b7247ac2d59ca4ee0a0607f15f2eb67baee6b51d",
+      hashSerialized: "0fb506d66cd8f63dd1a6abe5309efe0e724a87162e60bbcac2e43e198ccccda3",
+      txouts: "518768",
+      supply: "2096780595614125",
       flags: ['txindex', 'coinstatsindex', 'blockfilterindex']
     },
   ]
@@ -158,7 +158,7 @@ export default function BitcoinSnapshotsRedesign() {
             </div>
 
             <TabsContent value="overview" className="space-y-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {networks.map((network) => (
                     <Card key={network.id} className="bg-gray-900 border-gray-800 overflow-hidden">
                       <div className={`h-2 w-full ${network.color}`}></div>
@@ -219,7 +219,7 @@ export default function BitcoinSnapshotsRedesign() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                     <Button asChild variant="outline" className="border-gray-700 hover:bg-gray-800">
                       <a
-                          href="https://pub-3fcf0b98b9e64d6381ced6eddee57bbf.r2.dev/022025/digests.txt"
+                          href="https://pub-3fcf0b98b9e64d6381ced6eddee57bbf.r2.dev/digests.txt"
                           target="_blank"
                           rel="noopener noreferrer"
                       >
@@ -228,7 +228,7 @@ export default function BitcoinSnapshotsRedesign() {
                     </Button>
                     <Button asChild variant="outline" className="border-gray-700 hover:bg-gray-800">
                       <a
-                          href="https://pub-3fcf0b98b9e64d6381ced6eddee57bbf.r2.dev/022025/digests.txt.asc"
+                          href="https://pub-3fcf0b98b9e64d6381ced6eddee57bbf.r2.dev/digests.txt.asc"
                           target="_blank"
                           rel="noopener noreferrer"
                       >
@@ -264,7 +264,7 @@ export default function BitcoinSnapshotsRedesign() {
                       </thead>
                       <tbody>
                       <tr className="border-b border-gray-800/50">
-                        <td className="py-4 px-2 font-medium">Size</td>
+                        <td className="py-4 px-2 font-medium">Chainstate Size</td>
                         {networks.map((network) => (
                             <td key={network.id} className="text-center py-4 px-2">
                               <Badge variant="outline" className={`${network.borderColor} ${network.textColor}`}>
@@ -352,7 +352,7 @@ export default function BitcoinSnapshotsRedesign() {
                                 Hash Serialized <Hash className="ml-1 h-3 w-3 text-gray-500"/>
                               </TooltipTrigger>
                               <TooltipContent>
-                                <p>hash_serialized_3 value</p>
+                                <p>hash_serialized value</p>
                               </TooltipContent>
                             </Tooltip>
                           </TooltipProvider>
@@ -414,4 +414,3 @@ export default function BitcoinSnapshotsRedesign() {
       </div>
   )
 }
-
