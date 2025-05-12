@@ -353,7 +353,7 @@ export default function BitcoinSnapshotsRedesign() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                     <Button asChild variant="outline" className="border-gray-700 hover:bg-gray-800 cursor-pointer">
                       <a
-                          href="https://pub-3fcf0b98b9e64d6381ced6eddee57bbf.r2.dev/digests.txt"
+                          href="https://github.com/jaonoctus/bitcoin-snapshots-react/releases/download/v0.1.0/digests.txt"
                           target="_blank"
                           rel="noopener noreferrer"
                       >
@@ -362,7 +362,7 @@ export default function BitcoinSnapshotsRedesign() {
                     </Button>
                     <Button asChild variant="outline" className="border-gray-700 hover:bg-gray-800 cursor-pointer">
                       <a
-                          href="https://pub-3fcf0b98b9e64d6381ced6eddee57bbf.r2.dev/digests.txt.asc"
+                          href="https://github.com/jaonoctus/bitcoin-snapshots-react/releases/download/v0.1.0/digests.txt.asc"
                           target="_blank"
                           rel="noopener noreferrer"
                       >
